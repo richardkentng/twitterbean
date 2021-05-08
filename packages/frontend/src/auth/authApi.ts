@@ -6,9 +6,12 @@ export async function login(handle: string, password: string): Promise<User> {
 
 export async function register(
   handle: string,
-  password: string
+  password: string,
+  firstName: string,
+  lastName: string,
+  picture: string,
 ): Promise<User> {
-  return post("api/auth/register", { handle, password });
+  return post("api/auth/register", { handle, password, firstName, lastName, picture});
 }
 
 export async function checkSession(): Promise<User | null> {

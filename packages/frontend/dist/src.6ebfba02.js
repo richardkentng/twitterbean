@@ -87633,9 +87633,11 @@ function LeftBar() {
     container: true
   }, _react.default.createElement(NavItem, {
     to: "/"
-  }, "Home"), state.user ? _react.default.createElement(NavItem, {
+  }, "Home"), state.user ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(NavItem, {
+    to: "/profile"
+  }, "My Profile"), _react.default.createElement(NavItem, {
     to: "/auth/logout"
-  }, "Logout") : _react.default.createElement(NavItem, {
+  }, "Logout")) : _react.default.createElement(NavItem, {
     to: "/auth/login"
   }, "Login")))));
 }
@@ -88420,7 +88422,33 @@ function NotFoundPage() {
     xs: 4
   }, "NotFound");
 }
-},{"@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","react":"node_modules/react/index.js"}],"src/App.jsx":[function(require,module,exports) {
+},{"@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","react":"node_modules/react/index.js"}],"src/profile/ProfilePage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ProfilePage;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _StateProvider = require("../StateProvider");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ProfilePage() {
+  //     const [state, dispatch] = useContext(Context)
+  console.log(">>>>>>>");
+  console.log(_StateProvider.StateContext);
+  console.log("<<<<<<"); //     useEffect(() => {
+  // console.log(state)
+  //     }, []);
+
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, " You've reached your Profile Page"));
+}
+},{"react":"node_modules/react/index.js","../StateProvider":"src/StateProvider.tsx"}],"src/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -88449,6 +88477,8 @@ var _LogoutPage = _interopRequireDefault(require("./auth/LogoutPage"));
 var _FeedPage = _interopRequireDefault(require("./feed/FeedPage"));
 
 var _NotFoundPage = _interopRequireDefault(require("./layout/NotFoundPage"));
+
+var _ProfilePage = _interopRequireDefault(require("./profile/ProfilePage"));
 
 var _StateProvider = _interopRequireWildcard(require("./StateProvider"));
 
@@ -88481,12 +88511,15 @@ function App() {
     path: "/",
     exact: true
   }, _react.default.createElement(_FeedPage.default, null)), _react.default.createElement(_reactRouterDom.Route, {
+    path: "/profile",
+    exact: true
+  }, _react.default.createElement(_ProfilePage.default, null)), _react.default.createElement(_reactRouterDom.Route, {
     path: "/auth/logout"
   }, _react.default.createElement(_LogoutPage.default, null)), _react.default.createElement(_reactRouterDom.Route, {
     component: _NotFoundPage.default
   }))), _react.default.createElement(_RightBar.default, null))))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","./layout/MainBar":"src/layout/MainBar.jsx","./layout/LeftBar":"src/layout/LeftBar.jsx","./layout/RightBar":"src/layout/RightBar.jsx","./auth/LoginPage":"src/auth/LoginPage.tsx","./auth/RegisterPage":"src/auth/RegisterPage.tsx","./auth/LogoutPage":"src/auth/LogoutPage.tsx","./feed/FeedPage":"src/feed/FeedPage.tsx","./layout/NotFoundPage":"src/layout/NotFoundPage.jsx","./StateProvider":"src/StateProvider.tsx","./auth/authApi":"src/auth/authApi.ts"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","./layout/MainBar":"src/layout/MainBar.jsx","./layout/LeftBar":"src/layout/LeftBar.jsx","./layout/RightBar":"src/layout/RightBar.jsx","./auth/LoginPage":"src/auth/LoginPage.tsx","./auth/RegisterPage":"src/auth/RegisterPage.tsx","./auth/LogoutPage":"src/auth/LogoutPage.tsx","./feed/FeedPage":"src/feed/FeedPage.tsx","./layout/NotFoundPage":"src/layout/NotFoundPage.jsx","./profile/ProfilePage":"src/profile/ProfilePage.js","./StateProvider":"src/StateProvider.tsx","./auth/authApi":"src/auth/authApi.ts"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 var define;
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -89280,7 +89313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57857" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63520" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

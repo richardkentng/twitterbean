@@ -88436,6 +88436,8 @@ var _authApi = require("../auth/authApi");
 
 var _StateProvider = require("../StateProvider");
 
+var _authApi = require("../auth/authApi");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -88453,17 +88455,32 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ProfilePage() {
-  var _useState = useState([]),
+  var _useState = (0, _react.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
       setUser = _useState2[1];
 
   (0, _react.useEffect)(function () {
-    (0, _authApi.checkSession)().then(function (user) {});
-  });
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, " You've reached your Profile Page"));
+    (0, _authApi.checkSession)().then(function (user) {
+      console.log(user);
+      setUser(user); // if (user && user._id) {
+      //   // this sets the session
+      //   dispatch({
+      //     type: "setUser",
+      //     payload: user,
+      //   });
+      // }
+    });
+  }, []);
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, " You've reached your Profile Page"), _react.default.createElement("img", {
+    src: user.picture,
+    alt: "profile",
+    style: {
+      width: '100px'
+    }
+  }), _react.default.createElement("p", null, _react.default.createElement("span", null, user.firstName), " ", _react.default.createElement("span", null, user.lastName)), _react.default.createElement("p", null, user.joinDate));
 }
-},{"react":"node_modules/react/index.js","../auth/authApi":"src/auth/authApi.ts","../StateProvider":"src/StateProvider.tsx"}],"src/App.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../StateProvider":"src/StateProvider.tsx","../auth/authApi":"src/auth/authApi.ts"}],"src/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89328,7 +89345,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49778" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58846" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

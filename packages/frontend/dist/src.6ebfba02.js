@@ -87350,21 +87350,24 @@ function _login() {
 
 exports.login = login;
 
-function register(_x3, _x4) {
+function register(_x3, _x4, _x5, _x6, _x7) {
   return _register.apply(this, arguments);
 }
 
 function _register() {
   _register = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(handle, password) {
+  regeneratorRuntime.mark(function _callee2(handle, password, firstName, lastName, picture) {
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             return _context2.abrupt("return", util_1.post("api/auth/register", {
               handle: handle,
-              password: password
+              password: password,
+              firstName: firstName,
+              lastName: lastName,
+              picture: picture
             }));
 
           case 1:
@@ -87939,6 +87942,21 @@ function LoginPage() {
       password = _react_1$useState4[0],
       setPassword = _react_1$useState4[1];
 
+  var _react_1$useState5 = react_1.useState(""),
+      _react_1$useState6 = _slicedToArray(_react_1$useState5, 2),
+      firstName = _react_1$useState6[0],
+      setFirstName = _react_1$useState6[1];
+
+  var _react_1$useState7 = react_1.useState(""),
+      _react_1$useState8 = _slicedToArray(_react_1$useState7, 2),
+      lastName = _react_1$useState8[0],
+      setLastName = _react_1$useState8[1];
+
+  var _react_1$useState9 = react_1.useState(""),
+      _react_1$useState10 = _slicedToArray(_react_1$useState9, 2),
+      picture = _react_1$useState10[0],
+      setPicture = _react_1$useState10[1];
+
   var _react_1$useContext = react_1.useContext(StateProvider_1.StateContext),
       state = _react_1$useContext.state,
       dispatch = _react_1$useContext.dispatch;
@@ -87959,7 +87977,7 @@ function LoginPage() {
               evt.preventDefault();
               _context.prev = 1;
               _context.next = 4;
-              return authApi_1.register(handle, password);
+              return authApi_1.register(handle, password, firstName, lastName, picture);
 
             case 4:
               user = _context.sent;
@@ -88046,6 +88064,33 @@ function LoginPage() {
     value: password,
     onChange: function onChange(evt) {
       return setPassword(evt.target.value);
+    }
+  })), react_1.default.createElement(core_1.FormControl, {
+    fullWidth: true
+  }, react_1.default.createElement(core_1.Input, {
+    id: "firstName",
+    placeholder: "firstName",
+    value: firstName,
+    onChange: function onChange(evt) {
+      return setFirstName(evt.target.value);
+    }
+  })), react_1.default.createElement(core_1.FormControl, {
+    fullWidth: true
+  }, react_1.default.createElement(core_1.Input, {
+    id: "lastName",
+    placeholder: "lastName",
+    value: lastName,
+    onChange: function onChange(evt) {
+      return setLastName(evt.target.value);
+    }
+  })), react_1.default.createElement(core_1.FormControl, {
+    fullWidth: true
+  }, react_1.default.createElement(core_1.Input, {
+    id: "picture",
+    placeholder: "picture",
+    value: picture,
+    onChange: function onChange(evt) {
+      return setPicture(evt.target.value);
     }
   })), react_1.default.createElement(core_1.FormControl, {
     fullWidth: true
@@ -89235,11 +89280,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56935" + '/');
-=======
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60376" + '/');
->>>>>>> submain
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57857" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

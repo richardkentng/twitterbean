@@ -26,7 +26,7 @@ export default function FeedPage() {
   async function submit(evt: SyntheticEvent) {
     evt.preventDefault();
 
-    const value = tweetInputValue?.trim();
+    const value = tweetInputValue.trim();
 
     if (!value) {
       return;

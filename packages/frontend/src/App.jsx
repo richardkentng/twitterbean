@@ -11,6 +11,8 @@ import RegisterPage from "./auth/RegisterPage";
 import LogoutPage from "./auth/LogoutPage";
 import FeedPage from "./feed/FeedPage";
 import NotFoundPage from "./layout/NotFoundPage";
+import ProfilePage from "./profile/ProfilePage"
+
 import StateProvider, { StateContext } from "./StateProvider";
 import { checkSession } from "./auth/authApi";
 
@@ -22,33 +24,43 @@ export default function App() {
           Twitterbean
         </Typography>
       </AppBar>
+
       <Router>
         <Switch>
           <Route path="/auth/login">
             <LoginPage />
           </Route>
+
           <Route path="/auth/register">
             <RegisterPage />
           </Route>
+
           <Route>
             <Grid container>
               <LeftBar />
               <MainBar>
+
                 <Switch>
                   <Route path="/" exact>
                     <FeedPage />
+                  </Route>
+                  <Route path="/profile" exact>
+                    <ProfilePage />
                   </Route>
                   <Route path="/auth/logout">
                     <LogoutPage />
                   </Route>
                   <Route component={NotFoundPage} />
                 </Switch>
+
               </MainBar>
               <RightBar />
             </Grid>
           </Route>
+
         </Switch>
       </Router>
+
     </StateProvider>
   );
 }

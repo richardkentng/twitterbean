@@ -7,13 +7,16 @@ import { Link, Redirect } from "react-router-dom";
 export default function LoginPage() {
   const [handle, setHandle] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [picture, setPicture] = useState("");
   const { state, dispatch } = useContext<ContextType>(StateContext);
 
   async function handleSubmit(evt: any) {
     evt.preventDefault();
 
     try {
-      const user = await register(handle, password);
+      const user = await register(handle, password, firstName, lastName, picture);
       dispatch({
         type: "setUser",
         payload: user,
@@ -63,6 +66,30 @@ export default function LoginPage() {
                   placeholder="Password"
                   value={password}
                   onChange={(evt) => setPassword(evt.target.value)}
+                />
+              </FormControl>
+              <FormControl fullWidth>
+                <Input
+                  id="firstName"
+                  placeholder="firstName"
+                  value={firstName}
+                  onChange={(evt) => setFirstName(evt.target.value)}
+                />
+              </FormControl>
+              <FormControl fullWidth>
+                <Input
+                  id="lastName"
+                  placeholder="lastName"
+                  value={lastName}
+                  onChange={(evt) => setLastName(evt.target.value)}
+                />
+              </FormControl>
+              <FormControl fullWidth>
+                <Input
+                  id="picture"
+                  placeholder="picture"
+                  value={picture}
+                  onChange={(evt) => setPicture(evt.target.value)}
                 />
               </FormControl>
               <FormControl fullWidth>

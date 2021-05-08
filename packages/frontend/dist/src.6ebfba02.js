@@ -87350,21 +87350,24 @@ function _login() {
 
 exports.login = login;
 
-function register(_x3, _x4) {
+function register(_x3, _x4, _x5, _x6, _x7) {
   return _register.apply(this, arguments);
 }
 
 function _register() {
   _register = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(handle, password) {
+  regeneratorRuntime.mark(function _callee2(handle, password, firstName, lastName, picture) {
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             return _context2.abrupt("return", util_1.post("api/auth/register", {
               handle: handle,
-              password: password
+              password: password,
+              firstName: firstName,
+              lastName: lastName,
+              picture: picture
             }));
 
           case 1:
@@ -87630,9 +87633,11 @@ function LeftBar() {
     container: true
   }, _react.default.createElement(NavItem, {
     to: "/"
-  }, "Home"), state.user ? _react.default.createElement(NavItem, {
+  }, "Home"), state.user ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(NavItem, {
+    to: "/profile"
+  }, "My Profile"), _react.default.createElement(NavItem, {
     to: "/auth/logout"
-  }, "Logout") : _react.default.createElement(NavItem, {
+  }, "Logout")) : _react.default.createElement(NavItem, {
     to: "/auth/login"
   }, "Login")))));
 }
@@ -87939,6 +87944,21 @@ function LoginPage() {
       password = _react_1$useState4[0],
       setPassword = _react_1$useState4[1];
 
+  var _react_1$useState5 = react_1.useState(""),
+      _react_1$useState6 = _slicedToArray(_react_1$useState5, 2),
+      firstName = _react_1$useState6[0],
+      setFirstName = _react_1$useState6[1];
+
+  var _react_1$useState7 = react_1.useState(""),
+      _react_1$useState8 = _slicedToArray(_react_1$useState7, 2),
+      lastName = _react_1$useState8[0],
+      setLastName = _react_1$useState8[1];
+
+  var _react_1$useState9 = react_1.useState(""),
+      _react_1$useState10 = _slicedToArray(_react_1$useState9, 2),
+      picture = _react_1$useState10[0],
+      setPicture = _react_1$useState10[1];
+
   var _react_1$useContext = react_1.useContext(StateProvider_1.StateContext),
       state = _react_1$useContext.state,
       dispatch = _react_1$useContext.dispatch;
@@ -87959,7 +87979,7 @@ function LoginPage() {
               evt.preventDefault();
               _context.prev = 1;
               _context.next = 4;
-              return authApi_1.register(handle, password);
+              return authApi_1.register(handle, password, firstName, lastName, picture);
 
             case 4:
               user = _context.sent;
@@ -88046,6 +88066,33 @@ function LoginPage() {
     value: password,
     onChange: function onChange(evt) {
       return setPassword(evt.target.value);
+    }
+  })), react_1.default.createElement(core_1.FormControl, {
+    fullWidth: true
+  }, react_1.default.createElement(core_1.Input, {
+    id: "firstName",
+    placeholder: "firstName",
+    value: firstName,
+    onChange: function onChange(evt) {
+      return setFirstName(evt.target.value);
+    }
+  })), react_1.default.createElement(core_1.FormControl, {
+    fullWidth: true
+  }, react_1.default.createElement(core_1.Input, {
+    id: "lastName",
+    placeholder: "lastName",
+    value: lastName,
+    onChange: function onChange(evt) {
+      return setLastName(evt.target.value);
+    }
+  })), react_1.default.createElement(core_1.FormControl, {
+    fullWidth: true
+  }, react_1.default.createElement(core_1.Input, {
+    id: "picture",
+    placeholder: "picture",
+    value: picture,
+    onChange: function onChange(evt) {
+      return setPicture(evt.target.value);
     }
   })), react_1.default.createElement(core_1.FormControl, {
     fullWidth: true
@@ -88375,7 +88422,33 @@ function NotFoundPage() {
     xs: 4
   }, "NotFound");
 }
-},{"@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","react":"node_modules/react/index.js"}],"src/App.jsx":[function(require,module,exports) {
+},{"@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","react":"node_modules/react/index.js"}],"src/profile/ProfilePage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ProfilePage;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _StateProvider = require("../StateProvider");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ProfilePage() {
+  //     const [state, dispatch] = useContext(Context)
+  console.log(">>>>>>>");
+  console.log(_StateProvider.StateContext);
+  console.log("<<<<<<"); //     useEffect(() => {
+  // console.log(state)
+  //     }, []);
+
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, " You've reached your Profile Page"));
+}
+},{"react":"node_modules/react/index.js","../StateProvider":"src/StateProvider.tsx"}],"src/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -88404,6 +88477,8 @@ var _LogoutPage = _interopRequireDefault(require("./auth/LogoutPage"));
 var _FeedPage = _interopRequireDefault(require("./feed/FeedPage"));
 
 var _NotFoundPage = _interopRequireDefault(require("./layout/NotFoundPage"));
+
+var _ProfilePage = _interopRequireDefault(require("./profile/ProfilePage"));
 
 var _StateProvider = _interopRequireWildcard(require("./StateProvider"));
 
@@ -88436,12 +88511,15 @@ function App() {
     path: "/",
     exact: true
   }, _react.default.createElement(_FeedPage.default, null)), _react.default.createElement(_reactRouterDom.Route, {
+    path: "/profile",
+    exact: true
+  }, _react.default.createElement(_ProfilePage.default, null)), _react.default.createElement(_reactRouterDom.Route, {
     path: "/auth/logout"
   }, _react.default.createElement(_LogoutPage.default, null)), _react.default.createElement(_reactRouterDom.Route, {
     component: _NotFoundPage.default
   }))), _react.default.createElement(_RightBar.default, null))))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","./layout/MainBar":"src/layout/MainBar.jsx","./layout/LeftBar":"src/layout/LeftBar.jsx","./layout/RightBar":"src/layout/RightBar.jsx","./auth/LoginPage":"src/auth/LoginPage.tsx","./auth/RegisterPage":"src/auth/RegisterPage.tsx","./auth/LogoutPage":"src/auth/LogoutPage.tsx","./feed/FeedPage":"src/feed/FeedPage.tsx","./layout/NotFoundPage":"src/layout/NotFoundPage.jsx","./StateProvider":"src/StateProvider.tsx","./auth/authApi":"src/auth/authApi.ts"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","./layout/MainBar":"src/layout/MainBar.jsx","./layout/LeftBar":"src/layout/LeftBar.jsx","./layout/RightBar":"src/layout/RightBar.jsx","./auth/LoginPage":"src/auth/LoginPage.tsx","./auth/RegisterPage":"src/auth/RegisterPage.tsx","./auth/LogoutPage":"src/auth/LogoutPage.tsx","./feed/FeedPage":"src/feed/FeedPage.tsx","./layout/NotFoundPage":"src/layout/NotFoundPage.jsx","./profile/ProfilePage":"src/profile/ProfilePage.js","./StateProvider":"src/StateProvider.tsx","./auth/authApi":"src/auth/authApi.ts"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 var define;
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -89235,7 +89313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60376" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63520" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

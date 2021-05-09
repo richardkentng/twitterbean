@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   }))
-export default function EditProfile() {
+export default function EditProfile(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState('Title');
@@ -43,7 +43,7 @@ export default function EditProfile() {
                         label="Content"
                         multiline
                         rows={4}
-                        defaultValue="Content"
+                        defaultValue= {props.text}
                         variant="outlined"
                         />
                     </div>

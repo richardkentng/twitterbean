@@ -1,5 +1,5 @@
 node_modules/
 packages/backend/.env
 packages/frontend/.cache/
-packages/frontend/dist/
+packages/frontend/dist
 

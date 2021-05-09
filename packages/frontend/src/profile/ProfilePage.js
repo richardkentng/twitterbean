@@ -10,6 +10,7 @@ export default function ProfilePage() {
 
     const [user, setUser] = useState({})
     const [tweets, setTweets] = useState([])
+    const [numTweets, setNumTweets] = useState(null)
 
     useEffect(() => {
         checkSession().then((user) => {
@@ -22,6 +23,7 @@ export default function ProfilePage() {
             const userTweets = tweets.filter(tweet => {
                 return tweet.user._id === user._id
             })
+            setNumTweets(userTweets.length)
             setTweets(userTweets)
         }
     }, [])
@@ -33,6 +35,7 @@ export default function ProfilePage() {
             <p><span>{user.firstName}</span> <span>{user.lastName}</span></p>
             <p>@{user.handle}</p>
             <p>{user.joinDate}</p>
+            <p>{numTweets} posts</p>
 
             {
             tweets.map((tweet) => (

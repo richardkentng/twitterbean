@@ -23,7 +23,10 @@ export default function ProfilePage() {
 
         async function getDate(user) {
             const date = new Date (user.joinDate)
-            const userDate = date.toDateString()
+            const stringDate = date.toDateString()
+            const userDate = stringDate.slice(3, stringDate.length)
+            // console.log(userDate.slice(3, userDate.length) ) 
+            console.log(">>>>>>>", userDate)
             setUserDate(userDate) 
         }
 

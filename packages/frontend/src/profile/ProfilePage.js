@@ -5,18 +5,30 @@ import { getFeed, submitTweet } from "../feed/feedApi";
 import {Paper} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 
+    
+
 
 export default function ProfilePage() {
-
     const [user, setUser] = useState({})
     const [tweets, setTweets] = useState([])
     const [numTweets, setNumTweets] = useState(null)
+    const [userDate, setUserDate] = useState(null)
 
     useEffect(() => {
         checkSession().then((user) => {
             setUser(user)
             getTweets(user);
+            getDate(user)
         });
+
+        async function getDate(user) {
+            const date = new Date (user.joinDate)
+            const stringDate = date.toDateString()
+            const userDate = stringDate.slice(3, stringDate.length)
+            // console.log(userDate.slice(3, userDate.length) ) 
+            console.log(">>>>>>>", userDate)
+            setUserDate(userDate) 
+        }
 
         async function getTweets(user) {
             const tweets = await getFeed();
@@ -25,6 +37,7 @@ export default function ProfilePage() {
             })
             setNumTweets(userTweets.length)
             setTweets(userTweets)
+            setNumTweets(userTweets.length)
         }
     }, [])
 
@@ -34,7 +47,7 @@ export default function ProfilePage() {
             <img src={user.picture} alt="profile" style={{width: '100px'}}/>
             <p><span>{user.firstName}</span> <span>{user.lastName}</span></p>
             <p>@{user.handle}</p>
-            <p>{user.joinDate}</p>
+            <p>Joined: {userDate}</p>
             <p>{numTweets} posts</p>
 
             {

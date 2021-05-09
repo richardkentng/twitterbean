@@ -6,13 +6,13 @@ import { checkSession } from "../auth/authApi";
 
 
 export default function ProfilePage() {
-    const [user, setUser] = useState([]);
+    // const [user, setUser] = useState([]);
    
-    useEffect(() => {
-        checkSession().then((user) => {
+    // useEffect(() => {
+    //     checkSession().then((user) => {
 
-        })
-    })
+    //     })
+    // })
 
 
     const [user, setUser] = useState({})

@@ -19,6 +19,12 @@ router.post("/", requireAuth, async (req, res, next) => {
     user: req.session.userId,
   });
 
+  // const User = mongoose.model("User");
+  // // @ts-ignore
+  // const user = await User.findById(req.session.userId)
+  // user.posts.push(post._id)
+  // await user.save()
+
   return res.json(post);
 });
 

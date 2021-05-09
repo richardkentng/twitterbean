@@ -35,6 +35,7 @@ export default function ProfilePage() {
             const userTweets = tweets.filter(tweet => {
                 return tweet.user._id === user._id
             })
+            setNumTweets(userTweets.length)
             setTweets(userTweets)
             setNumTweets(userTweets.length)
         }
@@ -46,9 +47,9 @@ export default function ProfilePage() {
             <img src={user.picture} alt="profile" style={{width: '100px'}}/>
             <p><span>{user.firstName}</span> <span>{user.lastName}</span></p>
             <p>@{user.handle}</p>
-            {/* <p>{user.joinDate}</p> */}
             <p>Joined: {userDate}</p>
             <p>{numTweets} posts</p>
+
             {
             tweets.map((tweet) => (
             <Box key={tweet._id} padding={1}>

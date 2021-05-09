@@ -4,6 +4,7 @@ import { getFeed, submitTweet } from "../feed/feedApi";
 
 import {Paper} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import EditProfile from './EditProfile';
 
     
 
@@ -56,6 +57,7 @@ export default function ProfilePage() {
                 <Paper elevation={1}>
                     <Box padding={1}>@{tweet.user.handle}</Box>
                     <Box padding={1}>{tweet.text}</Box>
+                    <EditProfile {...tweet}/>
                 </Paper>
             </Box>
             ))}

@@ -39,4 +39,16 @@ router.get("/", async (req, res, next) => {
   return res.json(posts);
 });
 
+// edit
+router.put("/:id", async(req, res, next) => {
+  const Post = mongoose.model("Post");
+  // console.log("POST ID>>>>> ", req.params.id)
+  const post = await Post.findById(req.params.id);
+  post.text = req.body.content
+  console.log(req.body.content)
+  await post.save()
+  return res.json(post);
+})
+
+
 module.exports = router;

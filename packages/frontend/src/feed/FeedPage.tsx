@@ -16,11 +16,13 @@ export default function FeedPage() {
 
   useEffect(() => {
     getTweets();
+    
   }, []);
 
   async function getTweets() {
     const tweets = await getFeed();
     setTweets(tweets);
+    console.log("THis is all the tweets =>>>>>", tweets)
   }
 
   async function submit(evt: SyntheticEvent) {
@@ -35,6 +37,7 @@ export default function FeedPage() {
     await submitTweet({ text: value });
     setTweetInputValue("");
     await getTweets();
+    
   }
 
   return (

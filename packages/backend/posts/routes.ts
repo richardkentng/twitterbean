@@ -33,4 +33,6 @@ router.get("/", async (req, res, next) => {
   return res.json(posts);
 });
 
+
 module.exports = router;
+

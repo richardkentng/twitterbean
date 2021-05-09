@@ -7,23 +7,6 @@ import { checkSession } from "../auth/authApi";
 
 export default function ProfilePage() {
 
-    const [user, setUser] = useState({})
-
-    useEffect(() => {
-        checkSession().then((user) => {
-            console.log(user);
-            setUser(user)
-            // if (user && user._id) {
-            //   // this sets the session
-            //   dispatch({
-            //     type: "setUser",
-            //     payload: user,
-            //   });
-            // }
-          });
-
-
-    }, [])
     return (
         <div>
             <h1> You've reached your Profile Page</h1>

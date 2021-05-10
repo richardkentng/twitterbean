@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const { json } = require("body-parser");
 const authRoutes = require("../backend/auth/routes");
@@ -11,6 +12,8 @@ const { mongoConnectionString } = require("./constants");
 
 const app = express();
 app.use(express.static("public"));
+
+const port = process.env.PORT || 3000
 
 // connect to the DB
 mongoose.connect(mongoConnectionString, {
@@ -46,10 +49,13 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.send('homepage of twitterbean api!')
+})
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 
-const server = app.listen(3000, () => {
+const server = app.listen(port, () => {
   console.log("Now listening on port:", server.address().port);
 });
 

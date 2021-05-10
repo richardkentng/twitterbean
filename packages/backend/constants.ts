@@ -1,1 +1,1 @@
-export const mongoConnectionString = "mongodb://localhost/twitterbean";
+export const mongoConnectionString = process.env.MONGODB_URI;

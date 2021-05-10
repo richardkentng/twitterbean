@@ -56,8 +56,8 @@ router.post("/register", async (req, res, next) => {
       return next(createError(400, "You are already logged in."));
     }
 
-    const { handle, password } = req.body;
-
+    const { handle, password, firstName, lastName, picture, joinDate } = req.body;
+    // console.log("====the req.body from User Register Router.post ==>", req.body)
     if (!handle || !password) {
       return next(createError(400, "Must provide both handle and password."));
     }
@@ -80,6 +80,10 @@ router.post("/register", async (req, res, next) => {
     const newUser = await User.create({
       handle,
       passwordHash,
+      firstName,
+      lastName,
+      picture,     
+      joinDate, 
     });
     console.log("Done");
 

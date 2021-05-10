@@ -45,7 +45,7 @@ router.put("/:id", async(req, res, next) => {
   // console.log("POST ID>>>>> ", req.params.id)
   const post = await Post.findById(req.params.id);
   post.text = req.body.content
-  console.log(req.body.content)
+  // console.log(req.body.content)
   await post.save()
   return res.json(post);
 })

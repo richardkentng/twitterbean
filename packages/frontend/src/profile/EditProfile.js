@@ -35,7 +35,12 @@ export default function EditProfile(props) {
       event.preventDefault();
       console.log(content)
       console.log("THIS IS PROPS: +++++++++", props)
-      props.editTweet(content, props._id)      
+      
+      
+      props.editTweet(content, props._id)
+
+
+      
     }
 
     return (

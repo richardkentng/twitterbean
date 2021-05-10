@@ -42,6 +42,25 @@ export default function ProfilePage() {
         }
     }, [])
 
+
+    function editTweet(content, id) {
+        const fetchOptions = { 
+            method: "PUT",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({content})        
+        }
+        
+        fetch(`http://localhost:3000/api/posts/${id}`, fetchOptions).then(res => res.json())
+        .then(data=> {
+            const tweetsCopy = [...tweets]
+            const tweetToBeUpdated = tweetsCopy.find(tweet => {
+                return tweet._id === id
+            })
+            tweetToBeUpdated.text = data.text
+            setTweets(tweetsCopy)
+        })
+    }
+
     return (
         <div>
             <h1> You've reached your Profile Page</h1>
@@ -57,7 +76,7 @@ export default function ProfilePage() {
                 <Paper elevation={1}>
                     <Box padding={1}>@{tweet.user.handle}</Box>
                     <Box padding={1}>{tweet.text}</Box>
-                    <EditProfile {...tweet}/>
+                    <EditProfile {...tweet} editTweet={editTweet}/>
                 </Paper>
             </Box>
             ))}

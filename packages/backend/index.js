@@ -49,6 +49,9 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.send('homepage of twitterbean api!')
+})
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 

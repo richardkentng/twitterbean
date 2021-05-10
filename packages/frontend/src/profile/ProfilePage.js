@@ -42,6 +42,8 @@ export default function ProfilePage() {
         }
     }, [])
 
+
+
     return (
         <div>
             <h1> You've reached your Profile Page</h1>
@@ -57,7 +59,7 @@ export default function ProfilePage() {
                 <Paper elevation={1}>
                     <Box padding={1}>@{tweet.user.handle}</Box>
                     <Box padding={1}>{tweet.text}</Box>
-                    <EditProfile {...tweet}/>
+                    <EditProfile {...tweet} editTweet={editTweet}/>
                 </Paper>
             </Box>
             ))}

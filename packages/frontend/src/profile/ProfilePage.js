@@ -27,7 +27,7 @@ export default function ProfilePage() {
             const stringDate = date.toDateString()
             const userDate = stringDate.slice(3, stringDate.length)
             // console.log(userDate.slice(3, userDate.length) ) 
-            console.log(">>>>>>>", userDate)
+            // console.log(">>>>>>>", userDate)
             setUserDate(userDate) 
         }
 

@@ -33,8 +33,8 @@ export default function EditProfile(props) {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log(content)
-      console.log("THIS IS PROPS: +++++++++", props)
+      // console.log(content)
+      // console.log("THIS IS PROPS: +++++++++", props)
       
       
       props.editTweet(content, props._id)

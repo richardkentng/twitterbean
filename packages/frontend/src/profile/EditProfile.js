@@ -37,16 +37,9 @@ export default function EditProfile(props) {
       console.log("THIS IS PROPS: +++++++++", props)
       
       
-      const fetchOptions = { 
-        method: "PUT",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({content})        
-      }
-      
-      fetch(`http://localhost:3000/api/posts/${props._id}`, fetchOptions).then(res => res.json())
-      .then(data=> { 
-        console.log("THIS IS THE DATA FROM FETCH: ",data)
-      })
+      props.editTweet(content, props._id)
+
+
       
     }
 

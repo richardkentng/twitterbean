@@ -57,7 +57,7 @@ router.post("/register", async (req, res, next) => {
     }
 
     const { handle, password, firstName, lastName, picture, joinDate } = req.body;
-    console.log("====the req.body from User Register Router.post ==>", req.body)
+    // console.log("====the req.body from User Register Router.post ==>", req.body)
     if (!handle || !password) {
       return next(createError(400, "Must provide both handle and password."));
     }
